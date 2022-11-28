@@ -3,7 +3,7 @@ body {
     padding: 0;
     box-sizing: border-box;
     scroll-behavior: smooth;
-    font-family: "Josefin Sans Thin", serif;
+  font-family: 'Josefin Sans', sans-serif;
 }
 
 .form-container, .confirm-container{
@@ -90,13 +90,17 @@ h1 {
 .confirm-container{
     text-align: left;
     color:whitesmoke;
-    padding:15px;
+    padding:15px 0;
     overflow: auto;
 }
+
 .confirm-container ul{
     display: flex;
     flex-direction: row;
     list-style: none;
+}
+.confirm-container h1{
+    width:fit-content;
 }
 
 

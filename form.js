@@ -1,63 +1,34 @@
+ //declaracion de variables
+
+ //obteniendo elemntos del DOM a traves de la id
 const form = document.getElementById("form");
-
 const ulForm = document.getElementById("form-ul");
-
-const formContainer = document.getElementById("form-container");
 const confirmContainer = document.getElementById("confirm-container");
-
 const inpNombre = document.getElementById("nombre");
 const inpMail = document.getElementById("mail");
 const txtMsg = document.getElementById("msg");
-const inpArray = [inpNombre, inpMail, txtMsg];
 
+//creando los elementos html para mostrar los errores en el formulario
 const errorNombre = document.createElement("p");
 const errorMail = document.createElement("p");
 const errorMsg = document.createElement("p");
 const errores = [errorNombre, errorMail, errorMsg];
+
+//decalrando banderas para confirmar cuando el documento estaria listo para ser "enviado"
 flags = [false, false, false];
 
+//cargando todos los elementos <p> creados anteriormente a la ulForm a traves del metodo appendChild()
 errores.forEach((aux, i) => {
     aux.classList.add("error-message");
     ulForm.children[i].appendChild(aux);
 })
 
-/*form.addEventListener("change", (e) => {
-    //validacion nombre
-    /!*    if (x.value.trim().length > maxValue) {
-            errorP.innerHTML = "El " + valueName + " no puede superar los " + maxValue + " caracteres";
-            x.classList.remove("correct-border");
-            x.classList.add("error-border");
-            flags[flagIndex] = false;
-        } else {
-            errorP.innerHTML = "";
-            x.classList.remove("error-border");
-            x.classList.add("correct-border")
-            flags[flagIndex] = true;
-        }*!/
 
 
-    //validacion email
-    if (/^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i.test(inpMail.value)) {
-        errorMail.innerHTML = "";
-        inpMail.classList.remove("error-border");
-        inpMail.classList.add("correct-border");
-        flags[4] = true;
-    } else {
-        errorMail.innerHTML = "El email ingresado es incorrecto, ingrese un formato valido de email (Ej. nombreficticio@email.com)";
-        inpMail.classList.remove("correct-border");
-        inpMail.classList.add("error-border");
-        flags[4] = false;
-    }
-
-    //validacion mensaje
-    mayorAX(txtMsg, "mensaje", errorMsg, 300, 5)
-
-    clearEmpty();
-})*/
-
+//creacion del evento subtit del formulario
 form.addEventListener("submit", (e) => {
-    //evitando q se envie el formulario
 
+    //evitando q se envie el formulario
     e.preventDefault();
     
     //validacion nombre
@@ -91,6 +62,7 @@ form.addEventListener("submit", (e) => {
         inpMail.classList.add("error-border");
         flags[1] = false;
     }
+
     //validacion mensaje
     if (txtMsg.value.trim() === "") {
         errorMsg.innerHTML = "El campo no puede estar vacio";
@@ -116,22 +88,33 @@ form.addEventListener("submit", (e) => {
     flags.forEach((aux,i)=> {
         console.log(aux+" error "+i) ;
     })
-    if (flags[0] && flags[1] && flags[2]) {
-        let flagT=true;
-        confirmContainer.classList.remove("hidden");
-        const ulMessage= document.createElement("ul");
 
+    //comprobando que las banderas esten todas en verdaderos para poder "mandar el formulario"
+    if (flags[0] && flags[1] && flags[2]) {
+        //removiendo la clase "hiiden" que mantenia oculto el div dnd se mostrara la informacion cargada en el formulario
+        confirmContainer.classList.remove("hidden");
+        //creacion de una ul dnd colocaremos las listas con   los datos del formulario
+        const ulMessage= document.createElement("ul");
+        //agregando el elemento ul en el div
         confirmContainer.appendChild(ulMessage);
-        ulMessage.appendChild(document.createElement("li")).innerHTML = inpNombre.value +"&nbsp"    
+        //agregando el elemento li en la ul previamente creada
+        ulMessage.appendChild(document.createElement("li")).innerHTML = inpNombre.value +"&nbsp"
+        //condicional para q solo intente cargar el email si este campo no esta vacio
         if(inpMail.value.length > 0) {
             ulMessage.appendChild(document.createElement("li")).innerHTML = "&nbsp"+"("+inpMail.value+")"+"&nbsp"
         }
         ulMessage.appendChild(document.createElement("li")).innerHTML = "&nbsp"+"dice"+"&nbsp" + txtMsg.value
-        ulMessage.appendChild(document.createElement("hr"))
+        ulMessage.appendChild(document.createElement("br"))
+         //setiando valores a default
+        inpNombre.value ="";
+        inpMail.value ="";
+        txtMsg.value ="";
+        txtMsg.classList.remove("correct-border");
+        inpNombre.classList.remove("correct-border");
+        inpMail.classList.remove("correct-border");
 
-      /*  confirmContainer.appendChild(document.createElement("p")).innerHTML = "<b>Nombre: </b>" + inpNombre.value;
-        confirmContainer.appendChild(document.createElement("p")).innerHTML = "<b>Email: </b>" + inpMail.value;
-        confirmContainer.appendChild(document.createElement("p")).innerHTML = "<b>Mensaje: </b>" + txtMsg.value;*/
+
+
     }
 
 })
