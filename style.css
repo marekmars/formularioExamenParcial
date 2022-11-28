@@ -1,0 +1,102 @@
+body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+    font-family: "Josefin Sans Thin", serif;
+}
+
+.form-container, .confirm-container{
+    width: 70%;
+    display: flex;
+    position: relative;
+    flex-direction: column;
+    text-align: center;
+    height: fit-content;
+    margin: 20px auto;
+    padding: 30px 0;
+    border: 1px solid black;
+    border-radius: 10px;
+    background-color: cadetblue;
+}
+
+h1 {
+    margin: 0;
+    padding: 0;
+    color: whitesmoke;
+    margin-bottom:40px;
+}
+
+#form-ul {
+    margin: auto;
+    padding: 0;
+    width: 50%;
+    display: flex;
+    flex-flow: column nowrap;
+    gap: 10px;
+    color: whitesmoke;
+    font-size:1.3rem;
+}
+
+#form-ul input, textarea {
+    width: 50%;
+    height:1.5rem;
+    border-radius: 7px;
+}
+#form-ul  textarea   {
+    height:8rem;
+    resize: none;
+}
+
+#form li {
+    list-style: none;
+}
+#form p {
+    margin: 5px 0;
+    padding: 0;
+ 
+}
+.error-message {
+    color:firebrick;
+    font-size:0.8rem;
+}
+.error-border{
+    border: 2px solid red;
+}
+
+.correct-border{
+    border:2px solid green;
+}
+
+.button{
+    width:150px;
+    height:30px;
+    margin:20px auto ;
+    font-weight:bold;
+    background-color:lightslategrey;
+    border: none;
+    border-radius:10px  ;
+    color:whitesmoke ;
+    font-size:1rem;
+    box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
+}
+.button:hover {
+    background-color:dimgray;
+    scale:105%;
+}
+.hidden{
+    display:none;
+}
+.confirm-container{
+    text-align: left;
+    color:whitesmoke;
+    padding:15px;
+    overflow: auto;
+}
+.confirm-container ul{
+    display: flex;
+    flex-direction: row;
+    list-style: none;
+}
+
+
